@@ -16,7 +16,7 @@ import {
 import {
   Colors
 } from 'react-native/Libraries/NewAppScreen';
-import HomeScreen from './src/screens/HomeScreen';
+import Navigation from './src/navigation/Navigation';
 
 
 function App(): JSX.Element {
@@ -28,8 +28,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={{flex:1}}>
-      {/* <Second/> */}
-      <HomeScreen/>
+      <Navigation/>
     </SafeAreaView>
   );
 }
@@ -38,14 +37,20 @@ function App(): JSX.Element {
 
 export default App;
 
-//homescreen de image ye animation eklemeye çalış cardlar kaydıkça değişsin
+//homescreen de image ye animation eklemeye çalış cardlar kaydıkça değişsin**
+//navigasyon kur**
+//stackları kur**
+//tab nav**
+//custom tab bar oluştur
 //search alanı ekle home screene
-//prodile screen oluştur
-//navigasyon kur
-//stackları kur
-//tab nav
+//profile screen oluştur
 //setting modal koy
 //login register screen 
 //redux kur
 //homedan detal screene giderken shared elements kullanarak animasyon yaparak git
-//oyun screene gel
+//Game screen kur
+//firebase auth kur
+//admob
+//push notification
+//firebase cloud storage ile kullanıcı verileri depola skor favori gibi
+//homescreene gelene verileri düzenle pagination gerekli olabilir

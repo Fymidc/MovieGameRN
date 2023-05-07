@@ -1,10 +1,14 @@
 import { View, Text, Dimensions, FlatList, Image, Platform } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { GetData } from '../Api';
-import { Result } from "../types"
-import BackDrop from '../components/BackDrop';
+import { GetData } from '../../Api';
+import { HomeStackParamList, Result } from "../../types"
+import BackDrop from '../../components/BackDrop';
 import Animated, { Extrapolation, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
-import ListView from '../components/ListView';
+import ListView from '../../components/ListView';
+import { TextInput } from 'react-native';
+import {useNavigation } from '@react-navigation/native'
+import type { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
+import AntDesign from 'react-native-vector-icons/AntDesign'
 
 
 const { width, height } = Dimensions.get("window")
@@ -14,15 +18,22 @@ const SPACER_ItEM_SIZE = (width - ITEM_SIZE) / 2;
 
 
 
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+HomeStackParamList,
+"HomeS"
+>
 
+interface Props {
+  navigation: NativeStackScreenProps<HomeStackParamList, "HomeS">;
+}
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}:Props) => {
   const [movie, setmovies] = useState<Result[]>([])
 
   const [loading, setloading] = useState(false)
 
 
-
+ // const navigation = useNavigation<HomeScreenNavigationProp>()
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -55,7 +66,28 @@ const HomeScreen = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }} >
-      <Text>Flat list nerede</Text>
+      <View style={{zIndex:22, 
+        backgroundColor:"rgba(255,255,255, 0.7)",
+        position:"absolute",
+        width:width*0.8,
+        left:"50%",
+        marginLeft:-width*0.8/2,
+        top:25,
+        flexDirection:"row",
+        alignItems:"center",
+        borderRadius:15,
+      
+        }} >
+          <AntDesign style={{paddingHorizontal:10}} name='search1' color={"grey"} size={20} />
+        <TextInput 
+        placeholderTextColor={"grey"}
+        style={{flex:1,
+        justifyContent:"center",
+        paddingLeft:5,
+        color:"black"
+      }} 
+        placeholder='Search a Movie...' />
+      </View>
 
     <BackDrop movie={movie} scrollX={scrollX} />
       <Animated.FlatList
@@ -77,18 +109,12 @@ const HomeScreen = () => {
           if (!index) {
             return (<View style={{ width: SPACER_ItEM_SIZE }} />)
           }
-
-           
-
           return (
 
-            <ListView scrollX={scrollX} item={item} index={index} />
+            <ListView navigation={navigation} scrollX={scrollX} item={item} index={index} />
           )
         }}
-
-
       />
-
 
     </View>
   )
