@@ -8,12 +8,13 @@ import GameScreen from '../screens/Game/GameScreen'
 import { GameStackParamList, HomeStackParamList, ProfileStackParamList, StackParamList, TabStackParamList } from '../types'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import DetailScreen from '../screens/Home/DetailScreen'
+import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 
 const HomeScreenStack = createNativeStackNavigator<HomeStackParamList>()
 const ProfileScreenStack = createNativeStackNavigator<ProfileStackParamList>()
 const GameScreenStack = createNativeStackNavigator<GameStackParamList>()
 const Tab = createBottomTabNavigator<TabStackParamList>()
-const Stack = createNativeStackNavigator<StackParamList>()
+const Stack = createSharedElementStackNavigator<StackParamList>()
 
 function HomeStack() {
     return(
@@ -101,6 +102,10 @@ const Navigation = () => {
         <Stack.Screen
             name='Detail'
             component={DetailScreen}
+            sharedElements={(route:any)=>{
+              const {item } = route.params
+              return [item.poster_path]
+            }}
             />
         <Stack.Screen
         name='Profile'

@@ -12,7 +12,7 @@ type Props = {
 
 const { width, height } = Dimensions.get("window")
 
-const BACKDROP_HIGHT = height * 0.6
+const BACKDROP_HIGHT = height * 0.4
 const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74;
 
 const BackDrop = ({ movie, scrollX }: Props) => {
@@ -42,7 +42,7 @@ const BackDrop = ({ movie, scrollX }: Props) => {
                     )
                 }}
             />
-            <LinearGradient colors={['transparent', 'white']}
+            <LinearGradient colors={['transparent', '#121212']}
                 style={{ width, height: BACKDROP_HIGHT, position: "absolute", bottom: 0 }}
             />
         </View>

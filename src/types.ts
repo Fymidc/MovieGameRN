@@ -49,4 +49,5 @@ export interface Results {
     Game: undefined
     Detail: { item: Result }
     
+    
   }

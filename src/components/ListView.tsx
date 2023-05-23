@@ -4,8 +4,19 @@ import Animated, { Extrapolation, SharedTransition, interpolate, useAnimatedScro
 import { HomeStackParamList, Result, StackParamList } from '../types';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
-import {useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
+import { SharedElement } from 'react-navigation-shared-element';
 
+
+
+
+const transition = SharedTransition.custom((values) => {
+  'worklet';
+  return {
+    height: withSpring(values.targetHeight),
+    width: withSpring(values.targetWidth),
+  };
+});
 const { width, height } = Dimensions.get("window")
 
 const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74;
@@ -19,8 +30,8 @@ type ListItemProps = {
 }
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
-StackParamList,
-"Home"
+  StackParamList,
+  "Home"
 >
 
 const ListView: React.FC<ListItemProps> = React.memo(({ item, index, scrollX }) => {
@@ -41,38 +52,34 @@ const ListView: React.FC<ListItemProps> = React.memo(({ item, index, scrollX }) 
       transform: [{ translateY: scale }],
     };
   })
-  const transition = SharedTransition.custom((values) => {
-    'worklet';
-    return {
-      height: withSpring(values.targetHeight),
-      width: withSpring(values.targetWidth),
-    };
-  });
+
   return (
     <View style={{ width: ITEM_SIZE }} >
 
-      <Animated.View 
-      
-      style={[{
-        marginHorizontal: SPACING * 2,
-        padding: SPACING * 2,
-        alignItems: "center",
-        backgroundColor: "white",
-        borderRadius: 34,
+      <Animated.View
 
-      }, rStyle]} >
+
+        style={[{
+          marginHorizontal: SPACING * 2,
+          padding: SPACING * 2,
+          alignItems: "center",
+          backgroundColor: "white",
+          borderRadius: 34,
+
+        }, rStyle]} >
 
         <TouchableOpacity
-        activeOpacity={0.9}
-        onPress={()=> navigation.navigate("Detail",{ item: item },)}
+          activeOpacity={0.9}
+          onPress={() => navigation.navigate("Detail", { item: item },)}
         >
+          <SharedElement  id={item.poster_path}>
+            <Image
+              resizeMode={"cover"}
+              source={{ uri: `https://image.tmdb.org/t/p/w500${item.poster_path}` }}
+              style={[{ width: 250, height: 350, borderRadius: 35 }]}
+            />
+          </SharedElement>
 
-          <Animated.Image
-          sharedTransitionTag='sharedTag'
-          sharedTransitionStyle={transition}
-          source={{ uri: `https://image.tmdb.org/t/p/w500${item.poster_path}` }}
-            style={{ width: 250, height: 350, borderRadius: 35 }}
-          />
         </TouchableOpacity>
         {/* <Text style={{ fontSize: 24 }} numberOfLines={1} >{item.title}</Text> */}
         <View style={{ position: "absolute", right: 18, top: 0, flexDirection: "row" }}>
@@ -90,6 +97,8 @@ const ListView: React.FC<ListItemProps> = React.memo(({ item, index, scrollX }) 
 
 
 })
+
+
 
 export default ListView
 

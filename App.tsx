@@ -54,3 +54,5 @@ export default App;
 //push notification
 //firebase cloud storage ile kullanıcı verileri depola skor favori gibi
 //homescreene gelene verileri düzenle pagination gerekli olabilir
+
+//shared elements kuruldu ama geçişlerde sıkıntı var 

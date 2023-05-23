@@ -18,10 +18,7 @@ const SPACER_ItEM_SIZE = (width - ITEM_SIZE) / 2;
 
 
 
-type HomeScreenNavigationProp = NativeStackNavigationProp<
-HomeStackParamList,
-"HomeS"
->
+
 
 interface Props {
   navigation: NativeStackScreenProps<HomeStackParamList, "HomeS">;
@@ -65,7 +62,7 @@ const HomeScreen = ({navigation}:Props) => {
 
 
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }} >
+    <View style={{ flex: 1, backgroundColor: "#121212" }} >
       <View style={{zIndex:22, 
         backgroundColor:"rgba(255,255,255, 0.7)",
         position:"absolute",
