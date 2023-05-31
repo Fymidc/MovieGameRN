@@ -1,11 +1,12 @@
 import { View, Text, Platform, Dimensions, Image, TouchableOpacity } from 'react-native'
-import React, { useMemo } from 'react'
+import React, { useState,useEffect} from 'react'
 import Animated, { Extrapolation, SharedTransition, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-import { HomeStackParamList, Result, StackParamList } from '../types';
+import { Detail, HomeStackParamList, Result, StackParamList } from '../types';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native'
 import { SharedElement } from 'react-navigation-shared-element';
+import { GetDetail } from '../Api';
 
 
 
@@ -52,6 +53,8 @@ const ListView: React.FC<ListItemProps> = React.memo(({ item, index, scrollX }) 
       transform: [{ translateY: scale }],
     };
   })
+
+  
 
   return (
     <View style={{ width: ITEM_SIZE }} >
