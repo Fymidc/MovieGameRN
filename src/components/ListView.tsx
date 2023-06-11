@@ -1,12 +1,11 @@
 import { View, Text, Platform, Dimensions, Image, TouchableOpacity } from 'react-native'
-import React, { useState,useEffect} from 'react'
-import Animated, { Extrapolation, SharedTransition, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-import { Detail, HomeStackParamList, Result, StackParamList } from '../types';
+import React from 'react'
+import Animated, { Extrapolation, SharedTransition, interpolate,  useAnimatedStyle, withSpring } from 'react-native-reanimated';
+import {HomeStackParamList, Result, StackParamList } from '../types';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native'
 import { SharedElement } from 'react-navigation-shared-element';
-import { GetDetail } from '../Api';
 
 
 
@@ -86,8 +85,11 @@ const ListView: React.FC<ListItemProps> = React.memo(({ item, index, scrollX }) 
         </TouchableOpacity>
         {/* <Text style={{ fontSize: 24 }} numberOfLines={1} >{item.title}</Text> */}
         <View style={{ position: "absolute", right: 18, top: 0, flexDirection: "row" }}>
-          <AntDesign name='star' color={"#FFE234"} size={18} />
-          <Text style={{ paddingHorizontal: 5, fontSize: 15, color: "#FFE234", fontWeight: "700" }}   >8/5</Text>
+          <AntDesign name='star' color={ item.vote_average < 5 ? "red":  item.vote_average > 7 ? "#16FF00" : item.vote_average > 5 ? " #F29727" : ""} size={18} />
+          <Text style={{ paddingHorizontal: 5,
+             fontSize: 15,
+              color: item.vote_average < 5 ? "red":  item.vote_average > 7 ? "#16FF00" : item.vote_average > 5 ? " #F29727" : "white", 
+              fontWeight: "700" }}   >{item.vote_average}</Text>
         </View>
         {/* <Text style={{ fontSize: 10 }}  >Genres: adventure</Text>
       <Text style={{ fontSize: 12 }} numberOfLines={3} >{item.overview}</Text> */}

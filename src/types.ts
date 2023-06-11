@@ -17,7 +17,7 @@ export interface Results {
     release_date: string
     title: string
     video: boolean
-    vote_average: number
+    vote_average: number | undefined
     vote_count: number
   }
   //detail types
@@ -27,6 +27,7 @@ export interface Results {
   }
 
   export interface Detail {
+    key:string
     adult: boolean
     backdrop_path: string
     belongs_to_collection: BelongsToCollection
@@ -50,7 +51,7 @@ export interface Results {
     tagline: string
     title: string
     video: boolean
-    vote_average: number
+    vote_average: number | undefined
     vote_count: number
     videos: Videos
   }
@@ -113,10 +114,7 @@ export interface Results {
     ProfileS : undefined
   }
 
-  export type GameStackParamList ={
-    GameS : undefined
-  }
-
+ 
   export type TabStackParamList ={
     HomeTab : undefined
     ProfileTab : undefined

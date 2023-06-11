@@ -12,9 +12,10 @@ export const GetData = async()=>{
 
 export const GetDetail = async(id:number)=>{
 
+    //console.log("gelen id",id)
     const results = await axios.get(`https://api.themoviedb.org/3/movie/${id}?&append_to_response=videos&api_key=aab288962f5e9e3a51176a7468307516`)
 
     console.log("get detail",results.data)
-    return results.data.results
+    return results.data
 
 }

@@ -41,18 +41,21 @@ export default App;
 //navigasyon kur**
 //stackları kur**
 //tab nav**
-//custom tab bar oluştur
-//search alanı ekle home screene
+//homedan detal screene giderken shared elements kullanarak animasyon yaparak git**
+//search alanı ekle home screene**
+//custom tab bar oluştur**
+
+//search funcionality ekle
+//infinity scroll ekle flatliste
+//login register screen 
 //profile screen oluştur
 //setting modal koy
-//login register screen 
 //redux kur
-//homedan detal screene giderken shared elements kullanarak animasyon yaparak git
 //Game screen kur
 //firebase auth kur
 //admob
 //push notification
+//fontları ve renkleri düzenle
 //firebase cloud storage ile kullanıcı verileri depola skor favori gibi
-//homescreene gelene verileri düzenle pagination gerekli olabilir
 
-//shared elements kuruldu ama geçişlerde sıkıntı var 
+ 

@@ -1,13 +1,12 @@
-import { View, Text, Dimensions, FlatList, Image, Platform } from 'react-native'
+import { View, Text, Dimensions, Platform } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { GetData } from '../../Api';
 import { HomeStackParamList, Result } from "../../types"
 import BackDrop from '../../components/BackDrop';
-import Animated, { Extrapolation, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import Animated, {  useAnimatedScrollHandler,  useSharedValue } from 'react-native-reanimated';
 import ListView from '../../components/ListView';
 import { TextInput } from 'react-native';
-import {useNavigation } from '@react-navigation/native'
-import type { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
+import type {  NativeStackScreenProps } from '@react-navigation/native-stack';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
 
@@ -50,7 +49,7 @@ const HomeScreen = ({navigation}:Props) => {
   }, [])
 
  
-
+console.log("home screeen movie",movie)
 
   const scrollX = useSharedValue(0)
 
