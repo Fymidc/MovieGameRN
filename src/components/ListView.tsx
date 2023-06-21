@@ -85,7 +85,7 @@ const ListView: React.FC<ListItemProps> = React.memo(({ item, index, scrollX }) 
         </TouchableOpacity>
         {/* <Text style={{ fontSize: 24 }} numberOfLines={1} >{item.title}</Text> */}
         <View style={{ position: "absolute", right: 18, top: 0, flexDirection: "row" }}>
-          <AntDesign name='star' color={ item.vote_average < 5 ? "red":  item.vote_average > 7 ? "#16FF00" : item.vote_average > 5 ? " #F29727" : ""} size={18} />
+          <AntDesign name='star' color={ item.vote_average < 5 ? "red":  item.vote_average > 7 ? "#16FF00" : item.vote_average > 5 ? " #F29727" : ""} size={15} />
           <Text style={{ paddingHorizontal: 5,
              fontSize: 15,
               color: item.vote_average < 5 ? "red":  item.vote_average > 7 ? "#16FF00" : item.vote_average > 5 ? " #F29727" : "white", 
